@@ -5,15 +5,18 @@ public class WishlistDTO {
 	
 	private int price;
 	
+	private String name;
+	
 	public WishlistDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public WishlistDTO(int pnum, int price) {
+	public WishlistDTO(int pnum, int price, String name) {
 		super();
 		this.pnum = pnum;
 		this.price = price;
+		this.name = name;
 	}
 	
 	public int getPnum() {
@@ -28,10 +31,19 @@ public class WishlistDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
 
 	@Override
 	public String toString() {
-		return "WithlistDTO [pnum=" + pnum + ", price=" + price + "]";
+		return "WithlistDTO [pnum=" + pnum + ", price=" + price + ", name=" + name +" ]";
 	}
 	
 }
+

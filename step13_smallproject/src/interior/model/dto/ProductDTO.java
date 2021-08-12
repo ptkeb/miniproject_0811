@@ -1,66 +1,31 @@
 package interior.model.dto;
 
 public class ProductDTO {
-	private String pname;
-	private int price;
-	private String standard;
-	private int priority;
-	private String color;
+	private int productPnum;
+	private String productPname;
+	private int productPrice;
+	private String productColor;
+	private int productPriority; 
 	
-	public ProductDTO()	{}
+	
 
-	public ProductDTO(String pname, int price, String standard, int priority, String color) {
-		super();
-		this.pname = pname;
-		this.price = price;
-		this.standard = standard;
-		this.priority = priority;
-		this.color = color;
-	}
+	public ProductDTO() {}
+	
 
-	public String getPname() {
-		return pname;
-	}
-
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public String getStandard() {
-		return standard;
-	}
-
-	public void setStandard(String standard) {
-		this.standard = standard;
-	}
-
-	public int getPriority() {
-		return priority;
-	}
-
-	public void setPriority(int priority) {
-		this.priority = priority;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
+	@Override
 	public String toString() {
-		return "ProductDTO [pname=" + pname + ", price=" + price + ", standard=" + standard + ", priority=" + priority
-				+ ", color=" + color + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("1. 力前 辆幅 : ");
+		builder.append(productPnum);
+		builder.append("2. 力前 疙 : ");
+		builder.append(productPname);
+		builder.append("3. 力前 啊拜  : ");
+		builder.append(productPrice);
+		builder.append("4. 力前 祸惑  : ");
+		builder.append(productColor);
+		builder.append("5. 力前 快急鉴困 : ");
+		builder.append(productPriority);
+		return builder.toString();
 	}
 	
 }

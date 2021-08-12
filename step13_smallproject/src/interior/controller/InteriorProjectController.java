@@ -68,7 +68,7 @@ public class InteriorProjectController {
 		return false;
 	}
 
-	public static WishlistDTO choosePurchase(int pnum) {
+	public static WishlistDTO chooseWishlist(int pnum) {
 		WishlistDTO product = null;
 		try {
 			product = WishlistDAO.getWishlist(pnum);
@@ -88,21 +88,25 @@ public class InteriorProjectController {
 		return null;
 	}
 	
-	public static void confirmPurchased() {
+	public static boolean confirmPurchased() {
 		System.out.println("==========yes or no==========");
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			StringTokenizer st = new StringTokenizer(in.readLine());
 			if (st.nextToken() == "yes") {
 				purchaseAllWishlist();
+				return true;
 			}else if (st.nextToken() == "no") {
 				System.out.println("구매하지 않습니다");
+				return false;
 			}else {
 				System.out.println("yes와 no로 입력해주세요");
+				return false;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 	
 	public static ArrayList<ProductDTO> purchaseAllWishlist() {

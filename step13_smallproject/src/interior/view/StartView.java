@@ -4,48 +4,50 @@ import java.util.ArrayList;
 
 import interior.controller.InteriorProjectController;
 import interior.model.dto.ProductDTO;
+import interior.model.dto.PurchaseListDTO;
+import interior.model.dto.WishlistDTO;
 import interior.view.EndView;
 
 public class StartView {
 
 	public static void main(String[] args) {
-		System.out.println("***** ëª¨ë“  ì œí’ˆ ê²€ìƒ‰ *****"); //1
+		System.out.println("***** ¸ğµç Á¦Ç° °Ë»ö *****"); //1
 		ArrayList<ProductDTO> allInteriorProduct = InteriorProjectController.getAllInteriorProducts();
 		System.out.println(allInteriorProduct);
 		
 		
-		System.out.println("*****ìƒí’ˆ í•œ ê°œ ê²€ìƒ‰ *****"); //2
-		ProductDTO productOne = InteriorProjectController.getOneProduct(4031);
+//		System.out.println("*****»óÇ° ÇÑ °³ °Ë»ö *****"); //2
+		ArrayList<ProductDTO> productOne = InteriorProjectController.getOneProduct(4031); // ¿¡·¯³ª´Ï±ñ ³ªÁß¿¡.
 		System.out.println(productOne);
-		
-		System.out.println("******ìƒí’ˆê²€ìƒ‰ (ì¹´í…Œê³ ë¦¬ ë³„)*******"); //3
+//		
+//		System.out.println("******»óÇ°°Ë»ö (Ä«Å×°í¸® º°)*******"); //3
 		Object productByCategory = InteriorProjectController.getThatProduct("Electronics");
-
-		
-		System.out.println("*******ìƒí’ˆì •ë³´ ìˆ˜ì • í›„ ê²€ìƒ‰******"); // 3.5
-		boolean updateProduct = InteriorProjectController.updateProduct("");
-		
-		System.out.println("*******ìƒí’ˆ ì„ íƒ (ì¥ë°”êµ¬ë‹ˆ)******"); //4 
-		ArrayList<ProductDTO> purchaseList = InteriorProjectController.choosePurchase("");
-		
-		
-		System.out.println("******ìƒí’ˆ ì„ íƒ (ë°”ë¡œ êµ¬ë§¤)****"); // 5
-		ArrayList<ProductDTO> choosePurchased = InteriorProjectController.choosePurchased("");
-		
-		System.out.println("ì¥ë°”êµ¬ë‹ˆ ë¬¼í’ˆ êµ¬ë§¤");
-		ArrayList<ProductDTO> choosePurchased = InteriorProjectController.purchaseWishlist("");
-		
-		System.out.println("******êµ¬ë§¤ í™•ì¸*********");  //6
-		ArrayList<ProductDTO> confirmPurchased = InteriorProjectController.confirmPurchased("");
-		
-		System.out.println("****ì¥ë°”êµ¬ë‹ˆ ë¦¬ìŠ¤íŠ¸ ì§€ìš°ê¸°*****");  // 7
-		boolean deletePurchaseList = InteriorProjectController.deletePurchaseList("");
-		
-		System.out.println("*******êµ¬ë§¤ ë¦¬ìŠ¤íŠ¸ í˜¸ì¶œ*******");  // 8
-		ArrayList<ProductDTO> callPurchasedList = InteriorProjectController.callPurchasedList("");
-		
-		System.out.println("*******ì „ì²´ ë¡œê·¸ í˜¸ì¶œ*******");   //9
-//		ArrayList<Product> callAllLogs = InteriorProjectController.callAllLogs("")
+//
+//		
+//		System.out.println("*******»óÇ°Á¤º¸ ¼öÁ¤ ÈÄ °Ë»ö******"); // 3.5
+		boolean updateProduct = InteriorProjectController.updateProduct(1011,"");
+//		
+//		System.out.println("*******»óÇ° ¼±ÅÃ (Àå¹Ù±¸´Ï)******"); //4 
+		WishlistDTO purchaseList = InteriorProjectController.chooseWishlist(1011);
+//		
+//		
+//		System.out.println("******»óÇ° ¼±ÅÃ (¹Ù·Î ±¸¸Å)****"); // 5
+		PurchaseListDTO choosePurchased = InteriorProjectController.choosePurchased(1011);
+//		
+//		System.out.println("Àå¹Ù±¸´Ï ¹°Ç° ±¸¸Å");
+		ArrayList<ProductDTO> choosePurchased1 = InteriorProjectController.purchaseAllWishlist();
+//		
+//		System.out.println("******±¸¸Å È®ÀÎ*********");  //6
+		boolean confirmPurchased2 = (boolean) InteriorProjectController.confirmPurchased();
+//		
+//		System.out.println("****Àå¹Ù±¸´Ï ¸®½ºÆ® Áö¿ì±â*****");  // 7
+		boolean deletePurchaseList = InteriorProjectController.deleteWishlist(1011);
+//		
+//		System.out.println("*******±¸¸Å ¸®½ºÆ® È£Ãâ*******");  // 8
+		ArrayList<ProductDTO> callPurchasedList = InteriorProjectController.callPurchasedList();
+//		
+//		System.out.println("*******ÀüÃ¼ ·Î±× È£Ãâ*******");   //9
+//		ArrayList<Product> callAllLogs = InteriorProjectController.callAllLogs("")  // ³ªÁß¿¡ ·Î±×ÆÄÀÏ ÅëÇÕÈÄ ÁøÇà
 		
 	}
 

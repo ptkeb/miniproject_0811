@@ -26,7 +26,7 @@ public class FurnitureDAO {
 			pstmt.setInt(3, furniture.getFurniturePrice());
 			pstmt.setString(4, furniture.getFurnitureStandard());
 			pstmt.setString(5, furniture.getFurnitureColor());
-			pstmt.setString(6, furniture.getFurnitureColor());
+			pstmt.setInt(6, furniture.getFurniturePriority());
 			
 			int result = pstmt.executeUpdate();
 		

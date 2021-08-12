@@ -59,13 +59,13 @@ public class ElectronicsDAO {
 
 
 		//삭제 
-		public static boolean deleteElectronics(String pnum) throws SQLException{
+		public static boolean deleteElectronics(int pnum) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try{
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement(sql.getProperty("deleteElectronics"));
-				pstmt.setString(1, pnum);
+				pstmt.setInt(1, pnum);
 				int result = pstmt.executeUpdate();
 				if(result == 1){
 					return true;
@@ -78,7 +78,7 @@ public class ElectronicsDAO {
 		
 		//Electronics 아이디로 해당 Electronics 모든 정보 검색
 		//반환값은 생성된 객체 또는 null 또는 예외
-		public static ElectronicsDTO getElectronics(String pnum) throws SQLException{
+		public static ElectronicsDTO getElectronics(int pnum) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
@@ -87,7 +87,7 @@ public class ElectronicsDAO {
 			try{
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement(sql.getProperty("getElectronics"));
-				pstmt.setString(1, pnum);
+				pstmt.setInt(1, pnum);
 				rset = pstmt.executeQuery();
 				
 				if(rset.next()){

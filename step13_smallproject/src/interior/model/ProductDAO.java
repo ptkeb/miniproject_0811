@@ -10,6 +10,7 @@ import interior.model.dto.SeasonalityDTO;
 
 public class ProductDAO {
 	public static boolean addProduct(int pnum, Object product) throws SQLException{
+		pnum = pnum % 1000;
 		if (pnum == 1) {
 			return FurnitureDAO.addFurniture((FurnitureDTO)product);
 		}
@@ -19,76 +20,94 @@ public class ProductDAO {
 		else if (pnum == 3) {
 			return SeasonalityDAO.addSeasonality((SeasonalityDTO)product);
 		}
-		else {
+		else if (pnum == 4){
 			return DecorationDAO.addDecoration((DecorationDTO)product);
 		}
+		else {
+			return false;
+		}	
 	}
 
 	
-	public static boolean updateProduct(int pnum, Object product) throws SQLException{
+	public static boolean updateProduct(int pnum, String major) throws SQLException{
+		pnum = pnum % 1000;
 		if (pnum == 1) {
-			return FurnitureDAO.addFurniture((FurnitureDTO)product);
+			return FurnitureDAO.updateFurniture(pnum,major);
 		}
 		else if (pnum == 2) {
-			return ElectronicsDAO.addElectronics((ElectronicsDTO)product);
+			return ElectronicsDAO.updateElectronics(pnum,major);
 		}
 		else if (pnum == 3) {
-			return SeasonalityDAO.addSeasonality((SeasonalityDTO)product);
+			return SeasonalityDAO.updateSeasonality(pnum,major);
+		}
+		else if (pnum == 4){
+			return DecorationDAO.updateDecoration(pnum,major);
 		}
 		else {
-			return DecorationDAO.addDecoration((DecorationDTO)product);
-		}
+			return false;
+		}	
 	}
+
 
 	
 	
-	public static boolean deleteProduct(int pnum, Object product) throws SQLException{
+	public static boolean deleteProduct(int pnum) throws SQLException{
+		pnum = pnum % 1000;
 		if (pnum == 1) {
-			return FurnitureDAO.addFurniture((FurnitureDTO)product);
+			return FurnitureDAO.deleteFurniture(pnum);
 		}
 		else if (pnum == 2) {
-			return ElectronicsDAO.addElectronics((ElectronicsDTO)product);
+			return ElectronicsDAO.deleteElectronics(pnum);
 		}
 		else if (pnum == 3) {
-			return SeasonalityDAO.addSeasonality((SeasonalityDTO)product);
+			return SeasonalityDAO.deleteSeasonality(pnum);
+		}
+		else if (pnum == 4) {
+			return DecorationDAO.deleteDecoration(pnum);
 		}
 		else {
-			return DecorationDAO.addDecoration((DecorationDTO)product);
-		}
+			return false;
+		}	
 	}
+
 
 	
 	
 	
-	public static boolean getProduct(int pnum, Object product) throws SQLException{
+	public static Object getProduct(int pnum) throws SQLException{
+		pnum = pnum % 1000;
 		if (pnum == 1) {
-			return FurnitureDAO.addFurniture((FurnitureDTO)product);
+			return FurnitureDAO.getFurniture(pnum);
 		}
 		else if (pnum == 2) {
-			return ElectronicsDAO.addElectronics((ElectronicsDTO)product);
+			return ElectronicsDAO.getElectronics(pnum);
 		}
 		else if (pnum == 3) {
-			return SeasonalityDAO.addSeasonality((SeasonalityDTO)product);
+			return SeasonalityDAO.getSeasonality(pnum);
+		}
+		else if (pnum == 4) {
+			return DecorationDAO.getDecoration(pnum);
 		}
 		else {
-			return DecorationDAO.addDecoration((DecorationDTO)product);
-		}
+			return null;
+		}	
 	}
 	
 	
-	public static Object getAllProduct() throws SQLException{
-		ArrayList<FurnitureDTO> A1 = new ArrayList<>();
-		A1.addAll(FurnitureDAO.getAllFurniture());
-		
-		A1.addAll(ElectronicsDAO.getAllElectronics());
-		
-		A1.addAll(SeasonalityDAO.getAllSeasonality());
-		
-		A1.addAll(DecorationDAO.getAllDecoration());
-		
-		return A1;
-		
-	}
 	
-	
+//	public static Object getAllProduct() throws SQLException{
+//		ArrayList<FurnitureDTO> A1 = new ArrayList<>();
+//		A1.addAll(FurnitureDAO.getAllFurniture());
+//		
+//		A1.addAll(ElectronicsDAO.getAllElectronics());
+//		
+//		A1.addAll(SeasonalityDAO.getAllSeasonality());
+//		
+//		A1.addAll(DecorationDAO.getAllDecoration());
+//		
+//		return A1;
+//		
+//	}
+//	
+//	
 }

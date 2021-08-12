@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import interior.model.dto.ProductDTO;
 
 public class EndView {
-	//모든 프로젝트 출력
+	//모든 프로젝트 출력 여러개 출력
 	public static void interiorListView(ArrayList allinteriorProject){
 		int length = allinteriorProject.size();
 		if( length != 0 ){
@@ -13,7 +13,7 @@ public class EndView {
 		}
 	}
 		
-	//특정 프로젝트 출력 
+	//특정 프로젝트 출력 한 개만 출력
 	public static void projectView(ProductDTO project){
 		System.out.println(project);		
 	}

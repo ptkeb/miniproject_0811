@@ -12,6 +12,10 @@ DROP TABLE decoration cascade constraint;
 
 DROP TABLE product cascade constraint;
 
+DROP TABLE wishlist cascade constraint;
+
+DROP TABLE purchase cascade constraint;
+
 DROP SEQUENCE product_id_seq;
 
 
@@ -51,6 +55,19 @@ CREATE TABLE decoration(
 	   priority			NUMBER(5) NOT NULL
 );
 
+CREATE TABLE wishlist(
+       pnum             NUMBER(10) PRIMARY KEY,
+       price            NUMBER(9) NOT NULL,
+       pname        	VARCHAR2(20)  NOT NULL    
+);
+
+CREATE TABLE purchase(
+       pnum             NUMBER(10) PRIMARY KEY,
+       price            NUMBER(9) NOT NULL,
+       pname        	VARCHAR2(20)  NOT NULL
+);
+
+
 CREATE SEQUENCE product_id_seq;
 	
 CREATE TABLE product (
@@ -59,10 +76,14 @@ CREATE TABLE product (
        price        VARCHAR2(9) NOT NULL      
 );
 
+
+
 ALTER TABLE product  ADD FOREIGN KEY (pnum) REFERENCES furniture  (pnum);
 ALTER TABLE product  ADD FOREIGN KEY (pnum) REFERENCES electronics  (pnum);
 ALTER TABLE product  ADD FOREIGN KEY (pnum) REFERENCES seasonality  (pnum);
 ALTER TABLE product  ADD FOREIGN KEY (pnum) REFERENCES decoration  (pnum);
+ALTER TABLE product  ADD FOREIGN KEY (pnum) REFERENCES wishlist  (pnum);
+ALTER TABLE product  ADD FOREIGN KEY (pnum) REFERENCES purchase  (pnum);
 
 --ALTER TABLE product ADD FOREIGN KEY (pname)  REFERENCES furniture  (pname);
 --ALTER TABLE product ADD FOREIGN KEY (pname)  REFERENCES electronics  (pname);

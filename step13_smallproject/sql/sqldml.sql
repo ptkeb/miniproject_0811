@@ -62,15 +62,15 @@ insert into seasonality values(4003, 'Á¶¸íB', 100200, '45*60*25', 'dark grey', 3
 
 
 --decoration Ä«Æê
-insert into seasonality values(4011, 'Ä«Æê', 100000, '30*60*15', 'white', 1);
-insert into seasonality values(4012, 'Ä«ÆêA', 300000, '40*60*20', 'red', 2);
-insert into seasonality values(4013, 'Ä«ÆêB', 1000000, '45*60*25', 'dark red', 3);
+insert into decoration values(4011, 'Ä«Æê', 100000, '30*60*15', 'white', 1);
+insert into decoration values(4012, 'Ä«ÆêA', 300000, '40*60*20', 'red', 2);
+insert into decoration values(4013, 'Ä«ÆêB', 1000000, '45*60*25', 'dark red', 3);
 
 
 --decoration Ä¿Æ°
-insert into seasonality values(4021, 'Ä¿Æ°', 100300, '30*60*15', 'white', 1);
-insert into seasonality values(4022, 'Ä¿Æ°A', 100500, '40*60*20', 'red', 2);
-insert into seasonality values(4023, 'Ä¿Æ°B', 100200, '45*60*25', 'dark blue', 3);
+insert into decoration values(4021, 'Ä¿Æ°', 100300, '30*60*15', 'white', 1);
+insert into decoration values(4022, 'Ä¿Æ°A', 100500, '40*60*20', 'red', 2);
+insert into decoration values(4023, 'Ä¿Æ°B', 100200, '45*60*25', 'dark blue', 3);
 
 
 --decoration Äí¼Ç

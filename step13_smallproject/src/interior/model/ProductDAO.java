@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import interior.model.dto.DecorationDTO;
 import interior.model.dto.ElectronicsDTO;
 import interior.model.dto.FurnitureDTO;
+import interior.model.dto.ProductDTO;
 import interior.model.dto.SeasonalityDTO;
 
 public class ProductDAO {
@@ -103,7 +104,7 @@ public class ProductDAO {
 	}
 	
 	
-	public static Object getAllProduct() throws SQLException{
+	public static ArrayList<ProductDTO> getAllProduct() throws SQLException{
 		ArrayList a1 = new ArrayList();
 		
 		a1.addAll(FurnitureDAO.getAllFurniture());
@@ -116,6 +117,15 @@ public class ProductDAO {
 		
 		return a1;
 		
+	}
+
+
+		public static ArrayList<ProductDTO> PackList(int pnum, String pname, int price, String color, int priority){
+		ArrayList<ProductDTO> b1 = new ArrayList<ProductDTO>();
+		ProductDTO b2 = new ProductDTO(pnum, pname, price, color, priority);
+		b1.add(b2);
+		
+		return b1;
 	}
 	
 	

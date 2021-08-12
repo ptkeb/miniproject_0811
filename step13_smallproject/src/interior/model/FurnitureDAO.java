@@ -39,7 +39,7 @@ public class FurnitureDAO {
 		return false;
 	}
 
-		public static boolean updateFurniture(String pnum, String major) throws SQLException{
+		public static boolean updateFurniture(int pnum, String major) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try{
@@ -47,7 +47,7 @@ public class FurnitureDAO {
 				
 				pstmt = con.prepareStatement(sql.getProperty("updateFurniture"));
 				pstmt.setString(1, major);
-				pstmt.setString(2, pnum);
+				pstmt.setInt(2, pnum);
 				
 				int result = pstmt.executeUpdate();
 				if(result == 1){
@@ -59,13 +59,13 @@ public class FurnitureDAO {
 			return false;
 		}
 
-		public static boolean deleteFurniture(String pnum) throws SQLException{
+		public static boolean deleteFurniture(int pnum) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try{
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement(sql.getProperty("deleteFurniture"));
-				pstmt.setString(1, pnum);
+				pstmt.setInt(1, pnum);
 				int result = pstmt.executeUpdate();
 				if(result == 1){
 					return true;
@@ -76,7 +76,7 @@ public class FurnitureDAO {
 			return false;
 		}
 	
-		public static FurnitureDTO getFurniture(String pnum) throws SQLException{
+		public static FurnitureDTO getFurniture(int pnum) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
@@ -84,7 +84,7 @@ public class FurnitureDAO {
 			try{
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement(sql.getProperty("getFurniture"));
-				pstmt.setString(1, pnum);
+				pstmt.setInt(1, pnum);
 				rset = pstmt.executeQuery();
 				if(rset.next()){
 					Furniture = new FurnitureDTO(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getInt(6));

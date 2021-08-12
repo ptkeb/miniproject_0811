@@ -38,13 +38,13 @@ public class ElectronicsDAO {
 		}
 
 		//¼öÁ¤
-		public static boolean updateElectronics(String pnum, String major) throws SQLException{
+		public static boolean updateElectronics(int pnum, String major) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try{
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement(sql.getProperty("updateElectronics"));
-				pstmt.setString(1, pnum);
+				pstmt.setInt(1, pnum);
 				pstmt.setString(2, major);
 				
 				int result = pstmt.executeUpdate();

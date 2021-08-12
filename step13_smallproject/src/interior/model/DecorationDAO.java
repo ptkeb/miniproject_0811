@@ -44,7 +44,7 @@ public class DecorationDAO {
 	}
 	
 	//  update decoration set 열 = ? where pnum =? 인데 아직 보류 ! 수정 필요
-	public static boolean updateDecoration(String decorationNum, String major) throws SQLException {
+	public static boolean updateDecoration(int decorationNum, String major) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -52,7 +52,7 @@ public class DecorationDAO {
 
 			pstmt = con.prepareStatement(sql.getProperty("updateDecoration"));
 			pstmt.setString(1, major);
-			pstmt.setString(2, decorationNum);
+			pstmt.setInt(2, decorationNum);
 
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
@@ -64,7 +64,7 @@ public class DecorationDAO {
 		return false;
 	}
 	
-	public static DecorationDTO getDecoration(String decorationNum) throws SQLException {
+	public static DecorationDTO getDecoration(int decorationNum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -73,7 +73,7 @@ public class DecorationDAO {
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement("select * from decoration where decorationNum=?");
-			pstmt.setString(1, decorationNum);
+			pstmt.setInt(1, decorationNum);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				decoration = new DecorationDTO(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getInt(6)
@@ -87,13 +87,13 @@ public class DecorationDAO {
 	
 	
 	// sql - delete from activist where activist_id=?
-	public static boolean deleteDecoration(String decorationNum) throws SQLException {
+	public static boolean deleteDecoration(int decorationNum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement("delete from decoration where decorationNum=?");
-			pstmt.setString(1, decorationNum);
+			pstmt.setInt(1, decorationNum);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;

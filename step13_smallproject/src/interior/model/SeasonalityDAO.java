@@ -39,7 +39,7 @@ public class SeasonalityDAO {
 		return false;
 	}
 
-		public static boolean updateSeasonality(String pnum, String major) throws SQLException{
+		public static boolean updateSeasonality(int pnum, String major) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try{
@@ -47,7 +47,7 @@ public class SeasonalityDAO {
 				
 				pstmt = con.prepareStatement(sql.getProperty("updateSeasonality"));
 				pstmt.setString(1, major);
-				pstmt.setString(2, pnum);
+				pstmt.setInt(2, pnum);
 				
 				int result = pstmt.executeUpdate();
 				if(result == 1){
@@ -59,13 +59,13 @@ public class SeasonalityDAO {
 			return false;
 		}
 
-		public static boolean deleteSeasonality(String pnum) throws SQLException{
+		public static boolean deleteSeasonality(int pnum) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try{
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement(sql.getProperty("deleteSeasonality"));
-				pstmt.setString(1, pnum);
+				pstmt.setInt(1, pnum);
 				int result = pstmt.executeUpdate();
 				if(result == 1){
 					return true;
@@ -76,7 +76,7 @@ public class SeasonalityDAO {
 			return false;
 		}
 	
-		public static SeasonalityDTO getSeasonality(String pnum) throws SQLException{
+		public static SeasonalityDTO getSeasonality(int pnum) throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;
@@ -84,7 +84,7 @@ public class SeasonalityDAO {
 			try{
 				con = DBUtil.getConnection();
 				pstmt = con.prepareStatement(sql.getProperty("getSeasonality"));
-				pstmt.setString(1, pnum);
+				pstmt.setInt(1, pnum);
 				rset = pstmt.executeQuery();
 				if(rset.next()){
 					Seasonality = new SeasonalityDTO(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getInt(6));

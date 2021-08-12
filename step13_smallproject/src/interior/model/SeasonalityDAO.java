@@ -26,7 +26,7 @@ public class SeasonalityDAO {
 			pstmt.setInt(3, seasonality.getSeasonalityPrice());
 			pstmt.setString(4, seasonality.getSeasonalityStandard());
 			pstmt.setString(5, seasonality.getSeasonalityColor());
-			pstmt.setString(6, seasonality.getSeasonalityColor());
+			pstmt.setString(6, seasonality.getSeasonalityPriority());
 			
 			int result = pstmt.executeUpdate();
 		

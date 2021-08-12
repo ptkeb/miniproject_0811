@@ -95,7 +95,7 @@ public class FurnitureDAO {
 			return Furniture;
 		}
 
-		public static ArrayList<FurnitureDTO> getAllActivists() throws SQLException{
+		public static ArrayList<FurnitureDTO> getAllFurniture() throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;

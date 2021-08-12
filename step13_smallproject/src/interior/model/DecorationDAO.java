@@ -105,7 +105,7 @@ public class DecorationDAO {
 	}
 	
 	// pnum으로 해당 제품 모든 정보 반환
-	public static ArrayList<DecorationDTO> getAllActivists() throws SQLException {
+	public static ArrayList<DecorationDTO> getAllDecoration() throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

@@ -26,7 +26,7 @@ public class SeasonalityDAO {
 			pstmt.setInt(3, seasonality.getSeasonalityPrice());
 			pstmt.setString(4, seasonality.getSeasonalityStandard());
 			pstmt.setString(5, seasonality.getSeasonalityColor());
-			pstmt.setString(6, seasonality.getSeasonalityPriority());
+			pstmt.setInt(6, seasonality.getSeasonalityPriority());
 			
 			int result = pstmt.executeUpdate();
 		
@@ -95,7 +95,7 @@ public class SeasonalityDAO {
 			return Seasonality;
 		}
 
-		public static ArrayList<SeasonalityDTO> getAllActivists() throws SQLException{
+		public static ArrayList<SeasonalityDTO> getAllSeasonality() throws SQLException{
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rset = null;

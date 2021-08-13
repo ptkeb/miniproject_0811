@@ -108,7 +108,7 @@ public class ElectronicsDAO {
 			ArrayList<ElectronicsDTO> list = null;
 			try{
 				con = DBUtil.getConnection();
-				pstmt = con.prepareStatement(sql.getProperty("getAllElectronics"));
+				pstmt = con.prepareStatement("select * from electronics");
 				rset = pstmt.executeQuery();
 				
 				list = new ArrayList<ElectronicsDTO>();

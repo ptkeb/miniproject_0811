@@ -1,12 +1,18 @@
 package interior.model.dto;
 
-public class ProductDTO {
+public class ProductDTO {							// 다른 DTO를 상위 DTO에서 호출해서 처리.
+	
 	private int productPnum;
 	private String productPname;
 	private int productPrice;
 	private String productStandard;
 	private String productColor;
 	private int productPriority; 
+//	private FurnitureDTO furniture;
+//	private ElectronicsDTO electornics;
+//	private SeasonalityDTO seasonality;
+//	private DecorationDTO decoration;
+	 
 	
 	public ProductDTO() {}
 	

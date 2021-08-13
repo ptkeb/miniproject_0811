@@ -32,7 +32,7 @@ public class DBUtil {
 	static{ 
 		try {
 			dbinfo.load( new FileInputStream("db.properties") );
-			sql.load(new FileInputStream("probonosql.properties"));
+			sql.load(new FileInputStream("interiorsql.properties"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

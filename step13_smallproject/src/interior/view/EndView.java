@@ -12,9 +12,9 @@ public class EndView {
 			}
 		}
 	}
-		
+	
 	//특정 프로젝트 출력 한 개만 출력
-	public static void projectView(ProductDTO project){
+	public static void projectView(Object project){
 		System.out.println(project);		
 	}
 	
@@ -22,7 +22,6 @@ public class EndView {
 	public static void allView(Object object){
 		System.out.println(object);
 	}
-	
 	
 	//예외 상황 출력
 	public static void showError(String message){

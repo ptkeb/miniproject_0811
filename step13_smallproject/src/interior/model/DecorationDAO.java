@@ -72,7 +72,7 @@ public class DecorationDAO {
 
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from decoration where decorationNum=?");
+			pstmt = con.prepareStatement("select * from decoration where pnum=?");
 			pstmt.setInt(1, decorationNum);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
@@ -92,7 +92,7 @@ public class DecorationDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("delete from decoration where decorationNum=?");
+			pstmt = con.prepareStatement("delete from decoration where pnum=?");
 			pstmt.setInt(1, decorationNum);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
@@ -112,7 +112,7 @@ public class DecorationDAO {
 		ArrayList<DecorationDTO> list = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getProperty("getAllActivists"));
+			pstmt = con.prepareStatement("select * from decoration");
 			rset = pstmt.executeQuery();
 
 			list = new ArrayList<DecorationDTO>();

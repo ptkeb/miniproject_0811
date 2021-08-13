@@ -89,7 +89,7 @@ public class FurnitureDAO {
 				if(rset.next()){
 					Furniture = new FurnitureDTO(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getInt(6));
 				}
-			}finally{
+			} finally {
 				DBUtil.close(con, pstmt, rset);
 			}
 			return Furniture;
@@ -102,7 +102,7 @@ public class FurnitureDAO {
 			ArrayList<FurnitureDTO> list = null;
 			try{
 				con = DBUtil.getConnection();
-				pstmt = con.prepareStatement(sql.getProperty("getAllFurniture"));
+				pstmt = con.prepareStatement("select * from furniture");
 				rset = pstmt.executeQuery();
 				
 				list = new ArrayList<FurnitureDTO>();

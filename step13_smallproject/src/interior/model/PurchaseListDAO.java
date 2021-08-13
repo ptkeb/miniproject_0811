@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import interior.model.dto.PurchaseListDTO;
+import interior.model.dto.WishlistDTO;
 import interior.model.util.DBUtil;
 
 public class PurchaseListDAO {
 	private static Properties sql = DBUtil.getSql();
 	
-	public static boolean addPurchaseList(PurchaseListDTO furniture) throws SQLException{
+	public static boolean addPurchaseList(WishlistDTO el) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try{
@@ -21,9 +22,9 @@ public class PurchaseListDAO {
 			
 			pstmt = con.prepareStatement(sql.getProperty("addPurchaseList"));
 			
-			pstmt.setInt(1, furniture.getPnum());
-			pstmt.setString(2, furniture.getPname());
-			pstmt.setInt(3, furniture.getPrice());
+			pstmt.setInt(1, el.getPnum());
+			pstmt.setString(2, el.getName());
+			pstmt.setInt(3, el.getPrice());
 			
 			int result = pstmt.executeUpdate();
 		
@@ -78,7 +79,7 @@ public class PurchaseListDAO {
 		ArrayList<PurchaseListDTO> list = null;
 		try{
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getProperty("getAllPurchaseList"));
+			pstmt = con.prepareStatement("select * from purchaselist");
 			rset = pstmt.executeQuery();
 			
 			list = new ArrayList<PurchaseListDTO>();

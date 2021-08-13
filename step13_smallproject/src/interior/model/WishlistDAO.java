@@ -15,16 +15,17 @@ public class WishlistDAO {
 	
 	private static Properties sql = DBUtil.getSql();
 	
-	public static boolean addDecoration(WishlistDTO wishlist) throws SQLException {
+	public static boolean addWishlist(WishlistDTO wishlist) throws SQLException {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	try {
 		con = DBUtil.getConnection();
 		
-		pstmt = con.prepareStatement(sql.getProperty("insert into withlist values(?, ?"));
+		pstmt = con.prepareStatement(sql.getProperty("insert into withlist values(?, ?, ?)"));
 
 		pstmt.setInt(1, wishlist.getPnum());
-		pstmt.setInt(2, wishlist.getPrice());
+		pstmt.setString(2, wishlist.getName());
+		pstmt.setInt(3, wishlist.getPrice());
 		int result = pstmt.executeUpdate();
 
 		if (result == 1) {
@@ -43,7 +44,7 @@ public class WishlistDAO {
 
 	try {
 		con = DBUtil.getConnection();
-		pstmt = con.prepareStatement(sql.getProperty("select * from wishlist where withlistNum=?"));
+		pstmt = con.prepareStatement(sql.getProperty("select * from wishlist where pnum=?"));
 		pstmt.setInt(1, wishlistNum);
 		rset = pstmt.executeQuery();
 		if (rset.next()) {
@@ -61,7 +62,7 @@ public class WishlistDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getProperty("delete from wishlist where decorationNum=?"));
+			pstmt = con.prepareStatement(sql.getProperty("delete from wishlist where pnum=?"));
 			pstmt.setInt(1, wishlistNum);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
@@ -73,7 +74,7 @@ public class WishlistDAO {
 		return false;
 	}
 	
-	// pnum으로 해당 제품 모든 정보 반환
+	// pnum�쑝濡� �빐�떦 �젣�뭹 紐⑤뱺 �젙蹂� 諛섑솚
 	public static ArrayList<WishlistDTO> getAllWishlist() throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -81,7 +82,7 @@ public class WishlistDAO {
 		ArrayList<WishlistDTO> list = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getProperty("select * from wishlist"));
+			pstmt = con.prepareStatement("select * from wishlist");
 			rset = pstmt.executeQuery();
 
 			list = new ArrayList<WishlistDTO>();

@@ -34,6 +34,7 @@ public class InteriorProjectController {
 		return allProduct;
 	}
 	
+	
 	public static ArrayList<ProductDTO> getOneProduct(int pnum) {
 		ArrayList<ProductDTO> product = null;
 		try {
@@ -42,7 +43,7 @@ public class InteriorProjectController {
 			e.printStackTrace();
 			System.out.println("잘못된 형식입니다.");
 			return null;
-		}
+		} 
 		return product;
 	}
 
@@ -67,7 +68,22 @@ public class InteriorProjectController {
 		}
 		return false;
 	}
-
+	public static WishlistDTO addWishlist(int pnum) {
+		boolean product = false;
+			try {
+				product = WishlistDAO.addWishlist(
+						(WishlistDTO) ProductDAO.getProduct(pnum));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			if (product == true) {
+				System.out.println("저장성공");
+			}else {
+				System.out.println("저장실패");
+			}
+		return null;
+	}
+	
 	public static WishlistDTO chooseWishlist(int pnum) {
 		WishlistDTO product = null;
 		try {
@@ -130,6 +146,7 @@ public class InteriorProjectController {
 				WishlistDAO.deleteWishlist(pnum);
 			} catch (SQLException e) {
 				e.printStackTrace();
+				
 			}
 		return false;
 	}
@@ -140,7 +157,11 @@ public class InteriorProjectController {
 				WishlistDAO.getAllWishlist();
 			} catch (SQLException e) {
 				e.printStackTrace();
+//				EndView.showError(message);
 			}
 		return null;
 	}
+
+
+
 }

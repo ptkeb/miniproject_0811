@@ -102,7 +102,7 @@ public class SeasonalityDAO {
 			ArrayList<SeasonalityDTO> list = null;
 			try{
 				con = DBUtil.getConnection();
-				pstmt = con.prepareStatement(sql.getProperty("getAllSeasonality"));
+				pstmt = con.prepareStatement("select * from seasonality");
 				rset = pstmt.executeQuery();
 				
 				list = new ArrayList<SeasonalityDTO>();

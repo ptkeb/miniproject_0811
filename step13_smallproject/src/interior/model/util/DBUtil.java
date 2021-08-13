@@ -22,28 +22,29 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class DBUtil { 
-	//db의 설정 정보를 보유한 객체
+public class DBUtil {
+	// db의 설정 정보를 보유한 객체
 	private static Properties dbinfo = new Properties();
-	
-	//모든 DAO클래스가 사용할 sql문장 정보
+
+	// 모든 DAO클래스가 사용할 sql문장 정보
 	private static Properties sql = new Properties();
 
-	static{ 
+	static {
 		try {
-			dbinfo.load( new FileInputStream("db.properties") );
+			dbinfo.load(new FileInputStream("db.properties"));
 			sql.load(new FileInputStream("interiorsql.properties"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Properties getSql() {
 		return sql;
 	}
 
-	public static Connection getConnection() throws SQLException{
-		return DriverManager.getConnection(dbinfo.getProperty("jdbc.url") , dbinfo.getProperty("jdbc.id"), dbinfo.getProperty("jdbc.pw"));
+	public static Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(dbinfo.getProperty("jdbc.url"), dbinfo.getProperty("jdbc.id"),
+				dbinfo.getProperty("jdbc.pw"));
 	}
 
 	// DML용

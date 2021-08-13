@@ -7,8 +7,9 @@ public class DecorationDTO {
 	private String decorationStandard;
 	private String decorationColor;
 	private int decorationPriority;
-	
-	public DecorationDTO() {}
+
+	public DecorationDTO() {
+	}
 
 	public DecorationDTO(int pnum, String decorationPname, int decorationPrice, String decorationStandard,
 			String decorationColor, int decorationPriority) {
@@ -75,9 +76,5 @@ public class DecorationDTO {
 				+ decorationPrice + ", decorationStandard=" + decorationStandard + ", decorationColor="
 				+ decorationColor + ", decorationPriority=" + decorationPriority + "]";
 	}
-	
-	
-	
-	
-	
+
 }

@@ -11,18 +11,16 @@ import java.util.Properties;
 import interior.model.dto.DecorationDTO;
 import interior.model.util.DBUtil;
 
-
 public class DecorationDAO {
-	
+
 	private static Properties sql = DBUtil.getSql();
 
-	
 	public static boolean addDecoration(DecorationDTO decoration) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-			
+
 			pstmt = con.prepareStatement("insert into decoration values(?, ?, ?, ?, ?, ?");
 
 			pstmt.setInt(1, decoration.getPnum());
@@ -42,8 +40,8 @@ public class DecorationDAO {
 		}
 		return false;
 	}
-	
-	//  update decoration set 열 = ? where pnum =? 인데 아직 보류 ! 수정 필요
+
+	// update decoration set 열 = ? where pnum =? 인데 아직 보류 ! 수정 필요
 	public static boolean updateDecoration(int decorationNum, String major) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -63,7 +61,7 @@ public class DecorationDAO {
 		}
 		return false;
 	}
-	
+
 	public static DecorationDTO getDecoration(int decorationNum) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -76,16 +74,15 @@ public class DecorationDAO {
 			pstmt.setInt(1, decorationNum);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
-				decoration = new DecorationDTO(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getInt(6)
-);
+				decoration = new DecorationDTO(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4),
+						rset.getString(5), rset.getInt(6));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
 		}
 		return decoration;
 	}
-	
-	
+
 	// sql - delete from activist where activist_id=?
 	public static boolean deleteDecoration(int decorationNum) throws SQLException {
 		Connection con = null;
@@ -103,7 +100,7 @@ public class DecorationDAO {
 		}
 		return false;
 	}
-	
+
 	// pnum으로 해당 제품 모든 정보 반환
 	public static ArrayList<DecorationDTO> getAllDecoration() throws SQLException {
 		Connection con = null;
@@ -117,7 +114,8 @@ public class DecorationDAO {
 
 			list = new ArrayList<DecorationDTO>();
 			while (rset.next()) {
-				list.add(new DecorationDTO(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getInt(6)));
+				list.add(new DecorationDTO(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4),
+						rset.getString(5), rset.getInt(6)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);

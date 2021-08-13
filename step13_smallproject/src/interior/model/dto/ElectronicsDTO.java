@@ -7,8 +7,9 @@ public class ElectronicsDTO {
 	private String electronicsStandard;
 	private String electronicsColor;
 	private int electronicsPriority;
-	
-	public ElectronicsDTO() {}
+
+	public ElectronicsDTO() {
+	}
 
 	public ElectronicsDTO(int pnum, String electronicsPname, int electronicsPrice, String electronicsStandard,
 			String electronicsColor, int electronicsPriority) {
@@ -75,7 +76,5 @@ public class ElectronicsDTO {
 				+ electronicsPrice + ", electronicsStandard=" + electronicsStandard + ", electronicsColor="
 				+ electronicsColor + ", electronicsPriority=" + electronicsPriority + "]";
 	}
-	
-	
 
 }

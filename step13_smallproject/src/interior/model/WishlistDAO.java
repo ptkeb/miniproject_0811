@@ -12,49 +12,51 @@ import interior.model.dto.WishlistDTO;
 import interior.model.util.DBUtil;
 
 public class WishlistDAO {
-	
+
 	private static Properties sql = DBUtil.getSql();
-	
+
 	public static boolean addWishlist(WishlistDTO wishlist) throws SQLException {
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	try {
-		con = DBUtil.getConnection();
-		
-		pstmt = con.prepareStatement(sql.getProperty("insert into withlist values(?, ?, ?)"));
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = DBUtil.getConnection();
 
-		pstmt.setInt(1, wishlist.getPnum());
-		pstmt.setString(2, wishlist.getName());
-		pstmt.setInt(3, wishlist.getPrice());
-		int result = pstmt.executeUpdate();
+			pstmt = con.prepareStatement(sql.getProperty("insert into withlist values(?, ?, ?)"));
 
-		if (result == 1) {
-			return true;
+			pstmt.setInt(1, wishlist.getPnum());
+			pstmt.setString(2, wishlist.getName());
+			pstmt.setInt(3, wishlist.getPrice());
+			int result = pstmt.executeUpdate();
+
+			if (result == 1) {
+				return true;
+			}
+		} finally {
+			DBUtil.close(con, pstmt);
 		}
-	} finally {
-		DBUtil.close(con, pstmt);
+		return false;
 	}
-	return false;
-}
+
 	public static WishlistDTO getWishlist(int wishlistNum) throws SQLException {
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet rset = null;
-	WishlistDTO wishlist = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		WishlistDTO wishlist = null;
 
-	try {
-		con = DBUtil.getConnection();
-		pstmt = con.prepareStatement(sql.getProperty("select * from wishlist where pnum=?"));
-		pstmt.setInt(1, wishlistNum);
-		rset = pstmt.executeQuery();
-		if (rset.next()) {
-			wishlist = new WishlistDTO(rset.getInt(1), rset.getInt(2), rset.getString(3));
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getProperty("select * from wishlist where pnum=?"));
+			pstmt.setInt(1, wishlistNum);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				wishlist = new WishlistDTO(rset.getInt(1), rset.getInt(2), rset.getString(3));
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
 		}
-	} finally {
-		DBUtil.close(con, pstmt, rset);
+		return wishlist;
 	}
-	return wishlist;
-}
+
 	// pnum, price
 	// sql - delete from activist where activist_id=?
 	public static boolean deleteWishlist(int wishlistNum) throws SQLException {
@@ -73,7 +75,7 @@ public class WishlistDAO {
 		}
 		return false;
 	}
-	
+
 	// pnum�쑝濡� �빐�떦 �젣�뭹 紐⑤뱺 �젙蹂� 諛섑솚
 	public static ArrayList<WishlistDTO> getAllWishlist() throws SQLException {
 		Connection con = null;
@@ -94,5 +96,5 @@ public class WishlistDAO {
 		}
 		return list;
 	}
-	
+
 }
